@@ -2,7 +2,7 @@
 //Link to download file...
 
 //pages 397
- 
+
 class baiscopelk{
      
     public function Data($url)
@@ -77,15 +77,7 @@ class baiscopelk{
         }
         // print_r($dateArr);
         $arrCount=count($dateArr);
-
         for ($i=0; $i < $arrCount; $i++) { 
-            for ($h=1; $h <= 24 ; $h++) { 
-                $hour = $h." ".'hours ago'; 
-                $Date = strrpos($hour,$dateArr[$i]);
-                if ($Date==false){
-                    echo "ok";
-                }
-            }
             $movieName_Date=$dateArr[$i].'&'.$movieData_1[$i].'<br>';
             $movieName_Date=str_replace('Sinhala Subtitle',"",$movieName_Date);
             $values[] = $movieName_Date;
@@ -100,6 +92,24 @@ class baiscopelk{
 $url='https://www.baiscopelk.com/category/%E0%B7%83%E0%B7%92%E0%B6%82%E0%B7%84%E0%B6%BD-%E0%B6%8B%E0%B6%B4%E0%B7%83%E0%B7%92%E0%B6%BB%E0%B7%90%E0%B7%83%E0%B7%92/%E0%B6%A0%E0%B7%92%E0%B6%AD%E0%B7%8A%E2%80%8D%E0%B6%BB%E0%B6%B4%E0%B6%A7%E0%B7%92/';
 $movie = new baiscopelk();
 $name = $movie->Data($url);
-print_r($name);
+foreach($name as $movieName){
+    // echo $movieName;()
+
+    $date = explode('&',$movieName);
+    $date2 = explode(' ',$date[0]);
+    
+    // echo $date[0]."<br>";
+    // for ($h=1; $h <=24 ; $h++) { 
+    //     $hour = $h." "."hours ago";
+        if("days" == $date2[1]){
+            $today=date("Y/m/d");
+            $date3 = explode('/',$today);
+            $date3[2] -= (int)$date2[0];
+            echo $date3[0].'/'.$date3[1].'/'.$date3[2].' > '. $date[1];
+                }
+    // }
+
+   
+}
 
 ?> 
