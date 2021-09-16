@@ -194,8 +194,8 @@ $(function(){
 	var multiItemSlider = $('.slick-multiItemSlider');
 	multiItemSlider.slick({
 		infinite: true,
-		slidesToShow: 4,
-		slidesToScroll: 4,
+		slidesToShow: 7,
+		slidesToScroll: 7,
 		arrows: false,
 		draggable:true,
 		autoplay: true,
@@ -205,8 +205,8 @@ $(function(){
 	    {
 	      breakpoint: 1024,
 	      settings: {
-	        slidesToShow: 3,
-	        slidesToScroll: 3,
+	        slidesToShow: 5,
+	        slidesToScroll: 5,
 	        infinite: true,
 	        dots: true
 	      }
@@ -214,15 +214,15 @@ $(function(){
 	    {
 	      breakpoint: 768,
 	      settings: {
-	        slidesToShow: 2,
-	        slidesToScroll: 2
+	        slidesToShow: 4,
+	        slidesToScroll: 4
 	      }
 	    },
 	    {
 	      breakpoint: 480,
 	      settings: {
-	        slidesToShow: 1,
-	        slidesToScroll: 1
+	        slidesToShow: 3,
+	        slidesToScroll: 3
 	      }
 	    }
 	  ]
