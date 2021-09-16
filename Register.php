@@ -1,3 +1,6 @@
+<?php
+require('php/Main/session.php');
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -13,7 +16,6 @@
 	<meta name="format-detection" content="telephone-no">
 	<link rel="stylesheet" href="css/plugins.css">
 	<link rel="stylesheet" href="css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
 		@media only screen and (max-width: 620px) {
 		  /* For mobile phones: */
@@ -22,17 +24,36 @@
 		  }
 		}
 	</style>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/plugins2.js"></script>
+	<script src="js/custom2.js"></script>
 </head>
 
+<?php		
+	if (logged_in()) {
+		?>
+			<script type="text/javascript">
+				window.location = "../../index.php";
+			</script>
+		<?php
+	}	
+?>
+
 <body>
+<div id="overlayForMassage" class="overlayMsg">
+	<div class="overlayBox">
+		<h2 id="overlayContent" class="">This is the overlay content.</h2>
+	</div>
+</div>
 <!--preloading-->
-<div id="preloader">
+<!-- <div id="preloader">
     <img class="logo" src="images/logo1.png" alt="" width="119" height="58">
     <div id="status">
         <span></span>
         <span></span>
     </div>
-</div>
+</div> -->
 <!--end of preloading-->
 	
     <!--login form popup-->
@@ -111,19 +132,13 @@
 <div class="page-single">
 	<div class="container">
 		<div class="row ipad-width">
-			<form id="myForm" action="php/Register.php" method="POST" class="user" enctype="multipart/form-data">
+			<form id="registerForm" class="user" enctype="multipart/form-data" onsubmit="return register(event);">
 				<div class="col-md-3 col-sm-12 col-xs-12">
 					<div class="user-information">
 						<div class="user-img">
 							<img id="output" src="images/uploads/user-img.png" alt="Avatar" style="vertical-align:middle; width:100px; height:100px; border-radius:50%;"><br>
-							<input type="file" accept="image/jpeg, image/png" name="fileToUpload"  onchange="loadFile(event)" id="file" style="display: none;" required/>
+							<input type="file" accept="image/jpeg, image/png" name="fileToUpload" onchange="loadFile(event)" id="file" style="display: none;" />
 							<label for="file" class="redbtn" id="upload_link" style="cursor: pointer;">Upload Image</label>
-							<script>
-								var loadFile = function(event) {
-									var image = document.getElementById('output');
-									image.src = URL.createObjectURL(event.target.files[0]);
-								};
-							</script>
 						</div>
 					</div>
 				</div>
@@ -131,27 +146,29 @@
 					<div class="form-style-1 user-pro" action="#">
 						<h4>Please Fill the Following Details to Register...</h4>
 						<div class="row">
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>Telephone No</label>
-								<input type="text" name="tpno" placeholder="+94XXXXXXXXX" required/>
+								<input type="text" name="tpno" placeholder="07XXXXXXXX" required/>
 							</div>
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>Email Address</label>
 								<input type="text" name="email" placeholder="name@mail.com" required/>
 							</div>
 						</div>
+						<br>
 						<div class="row">
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>First Name</label>
 								<input type="text" name="fname" placeholder="Your First Name " required/>
 							</div>
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>Last Name</label>
 								<input type="text" name="lname" placeholder="Your Last Name" required/>
 							</div>
 						</div>
+						<br>
 						<div class="row">
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>Country</label>
 									<select id="country" name="country" required/>
 									   <option value="Afganistan">Afghanistan</option>
@@ -403,12 +420,13 @@
 									</select>
 							</div>
 						</div>
+						<br>
 						<div class="row">
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>Date Of Birth</label>
 								<input type="date" name="dob" placeholder="XX/XX/XXXX" required/>
 							</div>
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>Sex</label>
 									<select id="sex" name="sex" required/>
 									   <option value="Male">Male</option>
@@ -417,25 +435,26 @@
 									</select>
 							</div>
 						</div>
+						<br>
 						<div class="row">
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>Password</label>
 								<input type="Password" placeholder="Password" name="password" id="pbox" required/>
 							</div>
-							<div class="col-md-6 form-it">
+							<div class="col-md-6">
 								<label>Confirm Password</label>
 								<input type="Password" placeholder="Confirm Password" name="cPassword" id="cpbox" required/>
 							</div>
 
-							
-
 						</div>
+						<br>
+						<br>
 					
 						<div class="row">
-							<div class="col-md-3">
-								<input id="submit" class="submit" class="loginLink" type="submit" name="submit" value="Register Now">
+							<div class="col-md-3 offset-md-3">
+								<input id="submit" class="submit" type="submit" name="submit" value="Register Now">
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 offset-md-3">
 			  					<input class="submit" type="reset" name="reset" value="Reset">
 							</div>
 							<script>
@@ -503,11 +522,8 @@
 </footer>
 <!-- end of footer section-->
 
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/plugins2.js"></script>
-<script src="js/custom.js"></script>
 </body>
 
+<script src="js/custom.js"></script>
 <!-- userfavoritelist14:04-->
 </html>

@@ -1,4 +1,6 @@
-<?php require('php/Main/session.php');?>
+<?php require('php/Main/session.php');
+require('php/dbconn.php');
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -22,17 +24,18 @@
 		}
 	</style>
 </head>
-<?php	confirm_logged_in();	?>
+<?php	confirm_logged_in();	
+?>
 
 <body>
 <!--preloading-->
-<div id="preloader">
+<!-- <div id="preloader">
     <img class="logo" src="images/logo1.png" alt="" width="119" height="58">
     <div id="status">
         <span></span>
         <span></span>
     </div>
-</div>
+</div> -->
 <!--end of preloading-->
 
 <!-- BEGIN | Header -->
@@ -123,192 +126,108 @@
 						<p>My Places</p>
 						<ul>
 							<li><a href="SuggestedMovies.php">&nbsp New Suggessions</a></li>
-							<li><a href="SelectedMovies.php">&nbsp My Selected Movies</a></li>
-							<li class="active"><a href="RejectedMovies.php">> My Rejected Movies</a></li>
+							<li ><a href="SelectedMovies.php">> My Selected Movies</a></li>
+							<li class="active"><a href="RejectedMovies.php">&nbsp My Rejected Movies</a></li>
 							<li><a href="#">&nbsp My Feedback</a></li>
 							<li><a href="#">&nbsp Community</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-
-
 				<div class="col-md-9">
-				<!-- <div class="topbar-filter user">
-					<p>Found <span>1,608 movies</span> in total</p>
-					<label>Sort by:</label>
-					<select>
-						<option value="range">-- Choose option --</option>
-						<option value="saab">-- Choose option 2--</option>
+				<div class="topbar-filter user" id="TOP_BAR">
+					<p>Found <span id ="top_bar_numMovies"><?php 
+					   $numMovies=mysqli_fetch_array($conn->query("SELECT COUNT(movieID) as totle from rejectedmovie_tb WHERE userID='".$_SESSION['MEMBER_ID']."'"));
+					   echo $numMovies['totle'];
+					?> 
+					</span><span> movies</span> in total</p>
+					<div id="stable_R" style="display:none">0</div>
+					<label class="Label">Sort by:</label>
+					<select id="selectFilter" onchange="selectFilter(true);">
+						<option >Date Added</option>
+						<option >Top Rated</option>
 					</select>
-					<a href="userfavoritelist.html" class="list"><i class="ion-ios-list-outline active"></i></a>
-					<a  href="userfavoritegrid.html" class="grid"><i class="ion-grid "></i></a>
-				</div> -->
+							
+				</div >
 			<!-- FILTER BOX >> it should set to left corner -->
 
-			<div class="flex-wrap-movielist">
-
-<div class="movie-item-style-1">
-	<img src="images/uploads/mv-item4.jpg" alt="">
-	<div class="hvr-inner">
-		<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	</div>
-	<div class="mv-item-infor">
-		<h6><a href="#">The walk</a></h6>
-		<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	</div>
-</div>
-<div class="movie-item-style-1">
-	<img src="images/uploads/mv3.jpg" alt="">
-	<div class="hvr-inner">
-		<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	</div>
-	<div class="mv-item-infor">
-		<h6><a href="#">blade runner  </a></h6>
-		<p class="rate"><i class="ion-android-star"></i><span>7.3</span> /10</p>
-	</div>
-</div>
-<div class="movie-item-style-1">
-	<img src="images/uploads/mv4.jpg" alt="">
-	<div class="hvr-inner">
-		<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	</div>
-	<div class="mv-item-infor">
-		<h6><a href="#">Mulholland pride</a></h6>
-		<p class="rate"><i class="ion-android-star"></i><span>7.2</span> /10</p>
-	</div>
-</div>
-<div class="movie-item-style-1">
-	<img src="images/uploads/mv5.jpg" alt="">
-	<div class="hvr-inner">
-		<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	</div>
-	<div class="mv-item-infor">
-		<h6><a href="#">skyfall: evil of boss</a></h6>
-		<p class="rate"><i class="ion-android-star"></i><span>7.0</span> /10</p>
-	</div>
-</div>
-<div class="movie-item-style-1">
-	<img src="images/uploads/mv-item1.jpg" alt="">
-	<div class="hvr-inner">
-		<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	</div>
-	<div class="mv-item-infor">
-		<h6><a href="#">Interstellar</a></h6>
-		<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	</div>
-</div>
-<div class="movie-item-style-1">
-	<img src="images/uploads/mv-item2.jpg" alt="">
-	<div class="hvr-inner">
-		<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	</div>
-	<div class="mv-item-infor">
-		<h6><a href="#">The revenant</a></h6>
-		<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	</div>
-</div>
-<div class="movie-item-style-1">
-	<img src="images/uploads/mv-it10.jpg" alt="">
-	<div class="hvr-inner">
-		<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	</div>
-	<div class="mv-item-infor">
-		<h6><a href="#">harry potter</a></h6>
-		<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	</div>
-</div>
-</div>
-
-<!-- 				<div class="topbar-filter">
-<label>Movies per page:</label>
-<select>
-<option value="range">5 Movies</option>
-<option value="saab">10 Movies</option>
-</select>
-
-<div class="pagination2">
-<span>Page 1 of 2:</span>
-<a class="active" href="#">1</a>
-<a href="#">2</a>
-<a href="#">3</a>
-<a href="#">...</a>
-<a href="#">78</a>
-<a href="#">79</a>
-<a href="#"><i class="ion-arrow-right-b"></i></a>
-</div>
-</div> -->
-<!-- FILTER BOX >> it should set to left corner -->
-</div>
+					<div id="base_movie">
+                       <!-- Loading From fliterData.php -->
+					</div>
+						
+			<!-- FILTER BOX >> it should set to left corner -->
+			</div>
 <!-- 
-<div class="col-md-7">
-<div class="ads">
-<img src="images/uploads/ads3.png" alt="">
-</div>
-</div> -->
-</div>
-</div>
-
+                <div class="col-md-7">
+                    <div class="ads">
+                        <img src="images/uploads/ads3.png" alt="">
+                    </div>
+                </div> -->
+		</div>
+	</div>
+	
 </div>
 
 
 <!-- footer section-->
 <footer class="ht-footer">
-<div class="container">
-<div class="flex-parent-ft">
-<div class="flex-child-ft item1">
-<a href="index.php"><img class="logo" src="images/logo1.png" alt=""></a>
-</div>
-<div class="flex-child-ft item2">
-<p>BestMovie.com<br>
-Dilanka Kasun, IBM (PVL)LTD, Ahangama.<br>
-Tharindu Sathsara, Nasa Institute, Alawwa.<br>
-Kavindu Damsith, Damsith International SPA, Galathara.<br>
-</p>
-<p>Call us: <a href="#">(+94) 711 234 5678</a></p>
-</div>
-</div>
-<div class="flex-parent-ft">
-<div class="flex-child-ft item1">
-<h4>Profile</h4>
-<ul>
-<li><a href="#">My Profile</a></li>
-</ul>
-</div>
-<div class="flex-child-ft item2">
-<h4>About</h4>
-<ul>
-<li><a href="#">About Us</a></li> 
-<li><a href="#">Facebook</a></li>
-</ul>
-</div>
-<div class="flex-child-ft item3">
-<h4>Contact</h4>
-<ul>
-<li><a href="#">Contact Us</a></li>
-<li><a href="#">Facebook</a></li>
-</ul>
-</div>
-<div class="flex-child-ft item4">
-<h4>Help</h4>
-<ul>
-<li><a href="#">Help Center</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="ft-copyright">
-<div class="backtotop">
-<p><a href="#" id="back-to-top">Back to top  <i class="ion-ios-arrow-thin-up"></i></a></p>
-</div>
-</div>
+    <div class="container">
+        <div class="flex-parent-ft">
+            <div class="flex-child-ft item1">
+                <a href="index.php"><img class="logo" src="images/logo1.png" alt=""></a>
+            </div>
+            <div class="flex-child-ft item2">
+                 <p>BestMovie.com<br>
+                 Dilanka Kasun, IBM (PVL)LTD, Ahangama.<br>
+                 Tharindu Sathsara, Nasa Institute, Alawwa.<br>
+                 Kavindu Damsith, Damsith International SPA, Galathara.<br>
+                 </p>
+                <p>Call us: <a href="#">(+94) 711 234 5678</a></p>
+            </div>
+        </div>
+        <div class="flex-parent-ft">
+            <div class="flex-child-ft item1">
+                <h4>Profile</h4>
+                <ul>
+                    <li><a href="#">My Profile</a></li>
+                </ul>
+            </div>
+            <div class="flex-child-ft item2">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li> 
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+            <div class="flex-child-ft item3">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+            <div class="flex-child-ft item4">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="ft-copyright">
+        <div class="backtotop">
+            <p><a href="#" id="back-to-top">Back to top  <i class="ion-ios-arrow-thin-up"></i></a></p>
+        </div>
+    </div>
 </footer>
 <!-- end of footer section-->
+
 
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>
 <script src="js/custom.js"></script>
+
 </body>
 
 <!-- userfavoritelist14:04-->
