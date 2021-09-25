@@ -460,3 +460,37 @@ function ajax(btn) {
 	{clickedBtn:btn,selected_page:1,table:stable}
  );
 }
+
+
+$(".movie-item >a, .movie-item >.title-in> h6 > a , .movie-item>.mv-img >a, .movie-item >.title-in >h6 >a").click(function(){
+    var movieid= $(this).attr("href").replace("moviesingle.php?M_ID=","");
+	countConnection(movieid,"TB_1");
+});
+
+$("#btn-trailer > a").click(function(){
+	var movie_ID=JSON.parse(document.getElementById("favouriteJ").innerHTML).movieID;
+	countConnection(movie_ID,"TB_2");
+});
+$("#btn-subtitle > a").click(function(){
+	var movie_ID=JSON.parse(document.getElementById("favouriteJ").innerHTML).movieID;
+	countConnection(movie_ID,"TB_3");
+});
+$("#btn-download > a").click(function(){
+	var movie_ID=JSON.parse(document.getElementById("favouriteJ").innerHTML).movieID;
+	countConnection(movie_ID,"TB_4");
+});
+
+
+function countConnection(movieid,Table){
+	$.ajax({
+		type: "POST",
+		url: "php/CountConnection.php",
+		data:{movieID:movieid ,table:Table},
+		success: function (data) {
+		if(data!=""){
+			alert(data);
+		 }
+	   }
+	});
+}
+

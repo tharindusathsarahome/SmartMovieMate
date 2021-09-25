@@ -1,6 +1,8 @@
-<?php require('php/Main/session.php');
+<?php 
+require('php/Main/session.php');
 require('php/dbconn.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>

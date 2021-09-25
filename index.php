@@ -1,6 +1,6 @@
 <?php
- require('php/Main/session.php');
- ?>
+require('php/Main/session.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -314,88 +314,34 @@
                             <div id="tab1" class="tab active">
                                 <div class="row">
                                     <div class="slick-multiItemSlider">
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0068646">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/mv-item5.jpg" alt="" width="285" height="437">
+                                    <?php
+                                        include_once 'php/dbContor.php';
+                                        $today_date = date("Y-m-d", strtotime($today_date));
+                                        $sql = new Data();
+                                        $sql->SQLData('today_update_tb','movieID',"date = '$today_date'","S");
+                                        $sqlSelect = $sql->seletData;
+                                        foreach ($sqlSelect as $x) {
+                                            $movieID=$x['movieID'];
+                                            $sql->SQLData('image_tb','imgUrl',"movie_tb_movieID ='$movieID'","S");
+                                            $IMG = $sql->seletData[0]['imgUrl'];
+                                            // echo $IMG;
+                                            echo "
+                                            <div class='movie-item'>
+                                                <a href='moviesingle.php?M_ID=$movieID'>
+                                                    <div class='mv-img'>
+                                                        <img src='$IMG' alt='' width='200' height='350'>
+                                                    </div>
+                                                </a>
+                                                <div class='title-in'>
+                                                    <div class='cate'>
+                                                        <span class='yell'><a href='#'>action</a></span>
+                                                    </div>
+                                                    <h6><a href='#'>The revenant</a></h6>
+                                                    <p><i class='ion-android-star'></i><span>7.4</span> /10</p>
                                                 </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span>
-                                                </div>
-                                                <h6><a href="#">Interstellar</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0113855">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/mv-item2.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">action</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0293429">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/mv-item1.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">comedy</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0499097">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/mv-item3.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
-                                                </div>
-                                                <h6><a href="#">The walk</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0993840">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/mv-item2.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">New</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">Triller</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
+                                            </div>";
+                                        }
+                                    ?>
                                     </div>
                                 </div>
                             </div>

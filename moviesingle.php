@@ -1,7 +1,7 @@
 
 <?php 
 require('php/Main/session.php');
-require('imdbphp/bootstrap.php');
+require('php/imdbphp/bootstrap.php');
 require('php/dbconn.php');
 
 // if (isset ($_GET["mid"])) {
@@ -151,17 +151,17 @@ require('php/dbconn.php');
 					?>
 					<div class="movie-btn">	
 						<div class="btn-transform transform-vertical red">
-							<div><a href="<?php echo $movie['trailerUel'] ?>" class="item item-1 redbtn"><i class="ion-play"></i>Trailer</a></div>
-							<div><a href="<?php echo $movie['trailerUel'] ?>" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+							<div id="btn-trailer"><a href="<?php echo $movie['trailerURL'] ?>" class="item item-1 redbtn"><i class="ion-play"></i>Trailer</a></div>
+							<div id="btn-trailer"><a href="<?php echo $movie['trailerURL'] ?>" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
 						</div>
 						<div class="btn-transform transform-vertical yellow">
-							<div><a href="<?php echo $movie['webUrl'] ?>" class="item item-1 yellowbtn"><i class="ion-card"></i>Subtitle</a></div>
-							<div><a href="<?php echo $movie['webUrl'] ?>" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+							<div id="btn-subtitle"><a href="<?php echo $movie['webUrl'] ?>" class="item item-1 yellowbtn"><i class="ion-card"></i>Subtitle</a></div>
+							<div id="btn-subtitle"><a href="<?php echo $movie['webUrl'] ?>" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
 						</div>
 						<div class="btn-transform transform-vertical yellow">
-							<div><a href="<?php echo $movie['websiteUrl'] ?>" class="item item-1 yellowbtn"><i class="ion-card"></i>Download</a></div>
-							<div><a href="<?php echo $movie['websiteUrl'] ?>" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
-						</div>
+							<div id="btn-download"><a href="<?php echo $movie['websiteUrl'] ?>" class="item item-1 yellowbtn"><i class="ion-card"></i>Download</a></div>
+							<div id="btn-download"><a href="<?php echo $movie['websiteUrl'] ?>" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+						</div> 
 					</div>
 				</div>
 			</div>
