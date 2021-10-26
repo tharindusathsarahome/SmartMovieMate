@@ -161,7 +161,7 @@ class insterData
 
     public function LanguageTableCreat($DATA)
     {
-       
+        
         include '../dbconn.php';
         if($DATA == 'WEB'){
             $this->con = 1;
@@ -180,7 +180,7 @@ class insterData
             $Arr=$this->Arr;
             $arrlenth = count($Arr);
         }
-        
+       
         for ($i=0; $i < $arrlenth ; $i++) {
             $movieUpdate_day=$DateArr[$i];
             // echo $movieUpdate_day;
@@ -222,10 +222,8 @@ class insterData
               }     
             }
         }
+        $this->EnteractorsDetails();
     }
-
-
-
 
 
     public function createTableCheck($imdbLan,$imdbID,$movieUpdate_day)
@@ -630,6 +628,55 @@ public function DownloadLink($movieID,$movieName,$year)
     //  $this->SQLquery('trailer_tb','trailerID,trailerName,trailerURL,movie_tb_movieID,like_added,viwes',"'$trailerID','$tralerName','$trailerURL','$movieID','$newDate','$trailerVIWE'",'I');
 
 
+}
+
+public  function EnteractorsDetails()
+{
+    for($X=1;$X<5000;$X+=50){
+        $URL='https://www.imdb.com/search/name/?gender=male,female&start='.$X.'&ref_=rlm';
+        $this->actorsDetails($URL);
+    }
+}
+
+public  function actorsDetails($url)
+{
+      
+    $data = file_get_contents($url);
+    $doc = new \DOMDocument('1.0', 'UTF-8');
+    $internalErrors = libxml_use_internal_errors(true);
+    $doc->loadHTML($data);
+
+    $actorList=$doc->getElementsByTagName('div');
+
+    include '../dbconn.php';
+
+    foreach ($actorList as $actor){
+        if($actor->getAttribute('class')=='lister-item mode-detail'){
+            $Id=$actor->getElementsByTagName('a')[0]->getAttribute('href');
+            $actorId=str_replace("nm","ACT_",explode("/",$Id)[2]);
+            
+            $actorImage=$actor->getElementsByTagName('img')[0]->getAttribute('src');
+
+            $actorName=$actor->getElementsByTagName('a')[1]->nodeValue;
+            $actorName=substr(explode(' ',$actorName,2)[1], 0, -1)."";
+           
+            $actorWard=$actor->getElementsByTagName('span')[0]->nodeValue;
+            $actorWard=str_replace(".","",$actorWard);
+            $actorWard=(int)str_replace(",","",$actorWard);
+           
+
+            $sql="SELECT * FROM actress_tb WHERE actorWard ='$actorWard' OR actressID='$actorId'";
+
+            $cloumns='actressID, actressName, imgActress, actorWard';
+            $values="'$actorId',".'"'.$actorName.'"'.",'$actorImage',$actorWard";
+
+            if(mysqli_fetch_array($conn->query($sql))){
+                $conn->query("DELETE FROM actress_tb WHERE actressID='$actorId' OR actorWard=$actorWard;");
+            }
+            $this->SQLquery('actress_tb',$cloumns,$values,"I");   
+        }
+    }   
+    libxml_use_internal_errors($internalErrors);
 }
 
 

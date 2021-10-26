@@ -480,7 +480,6 @@ $("#btn-download > a").click(function(){
 	countConnection(movie_ID,"TB_4");
 });
 
-
 function countConnection(movieid,Table){
 	$.ajax({
 		type: "POST",
@@ -494,3 +493,90 @@ function countConnection(movieid,Table){
 	});
 }
 
+$(document).ready(function(){
+	tabSelect("latestMovies","Lmovies_topR");
+	tabSelect("latestTvSeries","LtvSeries_topR");
+});
+	
+
+$(".tab-links > li > a").click(function(){
+	// $.getScript('js/custom2.js');
+	var tName=$(this).attr("name");
+	var selectedSection="";
+	if(tName.split("_")[0]=="Lmovies"){
+		selectedSection="latestMovies";
+	}else{
+        selectedSection="latestTvSeries";
+	}
+	tabSelect(selectedSection,tName);
+});
+
+function selectFilterSmall(){
+	var selected=document.getElementById("selectFilter");
+    selected=selected.options[selected.selectedIndex].value;
+	var selectedSection="";
+	if(selected.split("_")[0]=="Lmovies"){
+		selectedSection="latestMovies";
+	}else{
+        selectedSection="latestTvSeries";
+	}
+	tabSelect(selectedSection,selected);
+}
+
+function  tabSelect(selectedSection,tName){
+	var multiItemSlider_m="";
+      if(selectedSection=="latestMovies"){
+	       multiItemSlider_m = $('.slick-multiItemSlider_m');
+	  }else{
+		   multiItemSlider_m = $('.slick-multiItemSlider_t');
+	  }
+var values={
+	infinite: true,
+	slidesToShow:5,
+	slidesToScroll: 5,
+	arrows: false,
+	draggable:true,
+	autoplay: true,
+	autoplaySpeed: 2000,
+	dots: true,
+	responsive: [
+	{
+	  breakpoint: 1024,
+	  settings: {
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		infinite: true,
+		dots: true
+	  }
+	},
+	{
+	  breakpoint: 768,
+	  settings: {
+		slidesToShow: 4,
+		slidesToScroll: 4
+	  }
+	},
+	{
+	  breakpoint: 480,
+	  settings: {
+		slidesToShow: 3,
+		slidesToScroll: 3
+	  }
+	}
+  ]
+};
+// slick-multiItemSlider_t  
+//    multiItemSlider.slick('unslick');
+  if ($(multiItemSlider_m).hasClass('slick-initialized')) {
+	$(multiItemSlider_m).slick('destroy');
+  }
+	$("#"+selectedSection).load(
+		"php/tabSelect.php",
+		{tabName:tName},
+		function(){
+			
+			  $(multiItemSlider_m).slick(values); 
+			}
+	 );
+}
+$("header>.top-search >input").attr("placeholder")

@@ -1,5 +1,6 @@
 <?php
 require('php/Main/session.php');
+$today_date = date("Y/m/d");
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +22,9 @@ require('php/Main/session.php');
     <link rel="stylesheet" href="css/plugins.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/NewPlugin.css">
+    
 
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/plugins2.js"></script>
-<script src="js/custom2.js"></script>
-
+<!-- <script src="js/custom2.js"></script> -->
 </head>
 
 
@@ -118,18 +116,22 @@ require('php/Main/session.php');
 <header class="ht-header">
     <div class="container">
         <nav class="navbar navbar-default navbar-custom">
-            <div class="navbar-header logo">
-                <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
+            <div class="navbar-header">
+            <!-- data-target="#bs-example-navbar-collapse-1" -->
+               <div class="navbar-toggle" data-toggle="collapse" >
+                    <span class="sr-only"></span>
                     <div id="nav-icon1">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
                 </div>
-                <a href="index.php"><img class="logo" src="images/logo1.png" alt="" width="350" height="100"></a>
+               <div>
+               <a href="index.php"><img class="logo" src="images/logo1.png" alt="" width="350" height="100"></a>
+               </div>
+                
             </div>
-            <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+            <div class="navbar-collapse flex-parent collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav flex-child-menu menu-left">
                     <li class="hidden">
                         <a href="#page-top"></a>
@@ -170,7 +172,7 @@ require('php/Main/session.php');
                 <?php } ?>
                 <?php if (!logged_in()) { ?>
                 <ul class="nav navbar-nav flex-child-menu menu-right">
-                    <li class="btn loginLink"><a id="LogInBtn" href="#">LOG In</a></li>
+                    <li class="loginLink"><a id="LogInBtn" href="#">LOG In</a></li>
                     <li><a href="Register.php">sign up</a></li>
                 </ul>
                 <?php } ?>
@@ -178,7 +180,8 @@ require('php/Main/session.php');
         </nav>
         <!-- top search form -->
         <div class="top-search">
-            <input type="text" placeholder="Search Any Movie or TV series">
+            <input type="text" class="search_1" placeholder="Search Any Movie or TV series">
+            <input type="text" class="search_2" placeholder="Search">
         </div>
     </div>
 </header>
@@ -215,11 +218,14 @@ require('php/Main/session.php');
                     <a href="#"><i class="ion-social-googleplus"></i></a>
                     <a href="#"><i class="ion-social-youtube"></i></a>
                 </div> -->
+
                 <div class="slick-multiItemSlider">
                     <div class="movie-item">
-                        <div class="mv-img">
-                            <a href="moviesingle.php?M_ID=MOV_0848228"><img src="images/uploads/slider1.jpg" alt="" width="285" height="437"></a>
-                        </div>
+                        <a href="moviesingle.php?M_ID=MOV_0848228">
+                            <div class="mv-img">
+                                <img src="images/uploads/mv-item2.jpg" alt="" width="285" height="437">
+                            </div>
+                        </a>
                         <div class="title-in">
                             <div class="cate">
                                 <span class="blue"><a href="#">Sci-fi</a></span>
@@ -229,21 +235,25 @@ require('php/Main/session.php');
                         </div>
                     </div>
                     <div class="movie-item">
-                        <div class="mv-img">
-                            <a href="#"><img src="images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
-                        </div>
+                        <a href="moviesingle.php?M_ID=MOV_0293429">
+                            <div class="mv-img">
+                                <img src="images/uploads/slider1.jpg" alt="" width="285" height="437">
+                            </div>
+                        </a>
                         <div class="title-in">
                             <div class="cate">
                                 <span class="yell"><a href="#">action</a></span>
                             </div>
-                            <h6><a href="moviesingle.php?M_ID=MOV_0293429">The revenant</a></h6>
+                            <h6><a href="#">The revenant</a></h6>
                             <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
                         </div>
                     </div>
                     <div class="movie-item">
-                        <div class="mv-img">
-                            <a href="#"><img src="images/uploads/slider3.jpg" alt="" width="285" height="437"></a>
-                        </div>
+                        <a href="moviesingle.php?M_ID=MOV_0848228">
+                            <div class="mv-img">
+                                <img src="images/uploads/slider2.jpg" alt="" width="285" height="437">
+                            </div>
+                        </a>
                         <div class="title-in">
                             <div class="cate">
                                 <span class="green"><a href="#">comedy</a></span>
@@ -258,7 +268,7 @@ require('php/Main/session.php');
                         </div>
                         <div class="title-in">
                             <div class="cate">
-                                <span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
+                                <span class="blue"><a href="#">Sci-fi</a></span>
                             </div>
                             <h6><a href="#">The walk</a></h6>
                             <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
@@ -266,7 +276,7 @@ require('php/Main/session.php');
                     </div>
                     <div class="movie-item">
                         <div class="mv-img">
-                            <a href="#"><img src="images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
+                            <a href="#"><img src="images/uploads/slider3.jpg" alt="" width="285" height="437"></a>
                         </div>
                         <div class="title-in">
                             <div class="cate">
@@ -276,505 +286,87 @@ require('php/Main/session.php');
                             <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
                         </div>
                     </div>
-                    <div class="movie-item">
-                        <div class="mv-img">
-                            <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                        </div>
-                        <div class="title-in">
-                            <div class="cate">
-                                <span class="green"><a href="#">Triller</a></span>
-                            </div>
-                            <h6><a href="#">Die hard</a></h6>
-                            <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="movie-items">
+    <div class=" movie-items">
         <div class="container">
             <div class="row ipad-width">
                 <!-- <div class="col-md-2">
                     <div class="ads"></div>
                 </div> -->
-                <div>
+                <div >
                     <div class="title-hd">
                         <h2>Latest Movies</h2>
-                        <a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+                        <a href="#" class="viewall display_block">View all <i class="ion-ios-arrow-right"></i></a>
                     </div>
                     <div class="tabs">
-                        <ul class="tab-links">
-                            <li class="active"><a href="#tab1">#Popular</a></li>
-                            <li><a href="#tab2"> #Top rated</a></li>
-                            <li><a href="#tab3"> #Most reviewed</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="tab1" class="tab active">
-                                <div class="row">
-                                    <div class="slick-multiItemSlider">
-                                    <?php
-                                        include_once 'php/dbContor.php';
-                                        $today_date = date("Y-m-d", strtotime($today_date));
-                                        $sql = new Data();
-                                        $sql->SQLData('today_update_tb','movieID',"date = '$today_date'","S");
-                                        $sqlSelect = $sql->seletData;
-                                        foreach ($sqlSelect as $x) {
-                                            $movieID=$x['movieID'];
-                                            $sql->SQLData('image_tb','imgUrl',"movie_tb_movieID ='$movieID'","S");
-                                            $IMG = $sql->seletData[0]['imgUrl'];
-                                            // echo $IMG;
-                                            echo "
-                                            <div class='movie-item'>
-                                                <a href='moviesingle.php?M_ID=$movieID'>
-                                                    <div class='mv-img'>
-                                                        <img src='$IMG' alt='' width='200' height='350'>
-                                                    </div>
-                                                </a>
-                                                <div class='title-in'>
-                                                    <div class='cate'>
-                                                        <span class='yell'><a href='#'>action</a></span>
-                                                    </div>
-                                                    <h6><a href='#'>The revenant</a></h6>
-                                                    <p><i class='ion-android-star'></i><span>7.4</span> /10</p>
-                                                </div>
-                                            </div>";
-                                        }
-                                    ?>
-                                    </div>
+                        <div id="latestMoviesFilter">
+                           <div  class="filtertabLg filterTabsLg">
+                           <ul class='tab-links'>
+                            <li class='active'><a href='#tab1' name='Lmovies_pop'>Popular</a></li>
+                            <li><a href='#tab2' name='Lmovies_topR'> Top rated</a></li>
+                            <li><a href='#tab3' name='Lmovies_most'> Most reviewed</a></li>
+                           </ul>
+                           </div>
+                            <div class="filterTabsSm">
+                                <hr>
+                                <div class="filter_view">
+                                    <select class="tab-links" id="selectFilter" onchange="selectFilterSmall();">
+                                    <option value="Lmovies_pop">Popular</option>
+                                    <option value="Lmovies_topR" >Top rated</option>
+                                    <option value="Lmovies_most">Most reviewed</option>
+                                    </select>
+                                <a href="#" class="display_nblock">View all <i class="ion-ios-arrow-right"></i></a>
                                 </div>
-                            </div>
-                            <div id="tab2" class="tab">
-                                <div class="row">
-                                    <div class="slick-multiItemSlider">
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider1.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span>
-                                                </div>
-                                                <h6><a href="#">Interstellar</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0293429">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider2.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">action</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">comedy</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider4.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
-                                                </div>
-                                                <h6><a href="#">The walk</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">New</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">Triller</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="tab3" class="tab">
-                                <div class="row">
-                                    <div class="slick-multiItemSlider">
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider1.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span>
-                                                </div>
-                                                <h6><a href="#">Interstellar</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0293429">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider2.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">action</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">comedy</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider4.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
-                                                </div>
-                                                <h6><a href="#">The walk</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">New</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">Triller</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <hr>
                             </div>
                         </div>
                     </div>
-                    <div class="title-hd">
-                        <h2>lastest tv series</h2>
-                        <a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
-                    </div>
-                    <div class="tabs">
-                        <ul class="tab-links">
-                            <li class="active"><a href="#tab1">#Popular</a></li>
-                            <li><a href="#tab2"> #Top rated</a></li>
-                            <li><a href="#tab3"> #Most reviewed</a></li>
-                        </ul>
                         <div class="tab-content">
-                            <div id="tab1" class="tab">
-                                <div class="row">
-                                    <div class="slick-multiItemSlider">
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/mv-item2.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span>
-                                                </div>
-                                                <h6><a href="#">Interstellar</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0293429">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider1.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">action</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider2.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">comedy</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider4.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
-                                                </div>
-                                                <h6><a href="#">The walk</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider3.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">New</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">Triller</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div id="tab1" class="tab active">
+                                <div class="row">            
+                                <div class="slick-multiItemSlider_m" id='latestMovies'>
+                                    <!-- Load From tabSelect -->
                                 </div>
-                            </div>
-                            <div id="tab2" class="tab active">
-                                <div class="row">
-                                    <div class="slick-multiItemSlider">
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider1.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span>
-                                                </div>
-                                                <h6><a href="#">Interstellar</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0293429">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider2.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">action</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">comedy</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider4.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
-                                                </div>
-                                                <h6><a href="#">The walk</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">New</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">Triller</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                              </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="title-hd" style="margin-top:60px;">
+                        <h2 >lastest tv series</h2>
+                        <a href="#" class="viewall display_block">View all <i class="ion-ios-arrow-right"></i></a>
+                       </div>
+                    <div class="tabs">
+                        <div id="latestTvSeriesFilter">
+                        <div  class="filtertabLg filterTabsLg">
+                          <ul class='tab-links '>
+                            <li class='active'><a href='#tab1' name='LtvSeries_pop'>Popular</a></li>
+                            <li><a href='#tab2' name='LtvSeries_topR'> Top rated</a></li>
+                            <li><a href='#tab3' name='LtvSeries_most'> Most reviewed</a></li>
+                          </ul>
+                        </div>
+                        <div class="filterTabsSm">
+                                <hr>
+                                <div class="filter_view">
+                                    <select class="tab-links" id="selectFilter" onchange="selectFilterSmall();">
+                                    <option value="LtvSeries_pop">Popular</option>
+                                    <option value="LtvSeries_topR" >Top rated</option>
+                                    <option value="LtvSeries_most">Most reviewed</option>
+                                    </select>
+                                <a href="#" class="display_nblock">View all <i class="ion-ios-arrow-right"></i></a>
                                 </div>
+                                <hr>
                             </div>
-                            <div id="tab3" class="tab">
+                        </div>
+                    </div>
+                        <div class="tab-content">
+                            <div id="tab1" class="tab active">
                                 <div class="row">
-                                    <div class="slick-multiItemSlider">
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider1.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span>
-                                                </div>
-                                                <h6><a href="#">Interstellar</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0293429">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider2.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">action</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <a href="moviesingle.php?M_ID=MOV_0848228">
-                                                <div class="mv-img">
-                                                    <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                                </div>
-                                            </a>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">comedy</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider4.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="blue"><a href="#">Sci-fi</a></span> <span class="orange"><a href="#">advanture</a></span>
-                                                </div>
-                                                <h6><a href="#">The walk</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <a href="#"><img src="images/uploads/slider2.jpg" alt="" width="285" height="437"></a>
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="yell"><a href="#">New</a></span>
-                                                </div>
-                                                <h6><a href="#">The revenant</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
-                                        <div class="movie-item">
-                                            <div class="mv-img">
-                                                <img src="images/uploads/slider3.jpg" alt="" width="285" height="437">
-                                            </div>
-                                            <div class="title-in">
-                                                <div class="cate">
-                                                    <span class="green"><a href="#">Triller</a></span>
-                                                </div>
-                                                <h6><a href="#">Die hard</a></h6>
-                                                <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-                                            </div>
-                                        </div>
+                                <div class="slick-multiItemSlider_t" id="latestTvSeries">  
+                                       <!-- Load From tabSelect -->
                                     </div>
                                 </div>
                             </div>
@@ -818,21 +410,8 @@ require('php/Main/session.php');
 
 <!-- footer section-->
 <footer class="ht-footer">
-    <div class="container">
-        <div class="flex-parent-ft">
-            <div class="flex-child-ft item1">
-                <a href="index.php"><img class="logo" src="images/logo1.png" alt=""></a>
-            </div>
-            <div class="flex-child-ft item2">
-                 <p>BestMovie.com<br>
-                 Dilanka Kasun, IBM (PVL)LTD, Ahangama.<br>
-                 Tharindu Sathsara, Nasa Institute, Alawwa.<br>
-                 Kavindu Damsith, Damsith International SPA, Galathara.<br>
-                 </p>
-                <p>Call us: <a href="#">(+94) 711 234 5678</a></p>
-            </div>
-        </div>
-        <div class="flex-parent-ft">
+    <div class="container ">
+        <div class="flex-parent-ft" style="padding: 30px 10% 10px 10%;">
             <div class="flex-child-ft item1">
                 <h4>Profile</h4>
                 <ul>
@@ -860,6 +439,19 @@ require('php/Main/session.php');
                 </ul>
             </div>
         </div>
+        <div class="flex-parent-ft">
+            <div class="flex-child-ft item1">
+                <a href="index.php"><img class="logo" src="images/logo1.png" alt=""></a>
+            </div>
+            <div class="flex-child-ft item2" >
+                 <p>BestMovie.com<br>
+                 Dilanka Kasun, IBM (PVL)LTD, Ahangama.<br>
+                 Tharindu Sathsara, Nasa Institute, Alawwa.<br>
+                 Kavindu Damsith, Damsith International SPA, Galathara.<br>
+                 </p>
+                <p>Call us: <a href="#">(+94) 711 234 5678</a></p>
+            </div>
+        </div>
     </div>
     <div class="ft-copyright">
         <div class="backtotop">
@@ -867,8 +459,10 @@ require('php/Main/session.php');
         </div>
     </div>
 </footer>
+<script src="js/jquery.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/plugins2.js"></script>
+<script src="js/custom2.js"></script>  
+<script src="js/custom.js"></script> 
 </body>
-
-<script src="js/custom.js"></script>
-
 </html>

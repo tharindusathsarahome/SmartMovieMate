@@ -45,9 +45,22 @@ $(function(){
 	}
 	//js for nav icon 
 	var clickMenubtn = $('#nav-icon1');
-	clickMenubtn.on('click', function(){
-		$(this).toggleClass('open');
-	});
+    if(windowWidth<975){
+		clickMenubtn.on('click', function(){
+			var Target=document.getElementById("bs-example-navbar-collapse-1");
+			$(this).toggleClass('open');
+			if($("#bs-example-navbar-collapse-1").hasClass("nav-bar-expand")){
+				Target.className="navbar-collapse flex-parent nav-bar-colaps";
+				isexpanded=false;
+			}else{
+				Target.className="navbar-collapse flex-parent nav-bar-expand";
+				isexpanded=true;
+			}
+		});
+	}else{
+        
+	}
+	
 	//js for tabs
 	var tabsClick = $('.tabs .tab-links a, .tab-links-2 a, .tab-links-3 a');
 	var multiItem = $('.slick-multiItem');
@@ -194,8 +207,8 @@ $(function(){
 	var multiItemSlider = $('.slick-multiItemSlider');
 	multiItemSlider.slick({
 		infinite: true,
-		slidesToShow: 7,
-		slidesToScroll: 7,
+		slidesToShow: 5,
+		slidesToScroll: 5,
 		arrows: false,
 		draggable:true,
 		autoplay: true,
@@ -205,8 +218,8 @@ $(function(){
 	    {
 	      breakpoint: 1024,
 	      settings: {
-	        slidesToShow: 5,
-	        slidesToScroll: 5,
+	        slidesToShow: 4,
+	        slidesToScroll: 4,
 	        infinite: true,
 	        dots: true
 	      }
@@ -214,8 +227,8 @@ $(function(){
 	    {
 	      breakpoint: 768,
 	      settings: {
-	        slidesToShow: 4,
-	        slidesToScroll: 4
+	        slidesToShow: 3,
+	        slidesToScroll: 3
 	      }
 	    },
 	    {
@@ -565,3 +578,6 @@ $(function(){
 
 
 });
+
+
+
