@@ -1,4 +1,4 @@
-# Movie Database Management and Recommendation System
+# SmartMovieMate : Movie Database Management and Recommendation System
 
 Welcome to the Movie Database Management and Recommendation System project! This system helps you discover the most suitable movies based on complex machine learning algorithms and big data analysis.
 
