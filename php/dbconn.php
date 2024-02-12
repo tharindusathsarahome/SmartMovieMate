@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db="tharind2_movie_db";
+$db="movie_db";
 
 $conn = new mysqli($servername, $username, $password,$db);
 
