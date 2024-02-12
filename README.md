@@ -2,7 +2,16 @@
 
 Welcome to the Movie Database Management and Recommendation System project! This system helps you discover the most suitable movies based on complex machine learning algorithms and big data analysis.
 
-![Project Screenshot](https://futrxlabs.com/wp-content/uploads/sites/4/2019/11/prj1/main.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/tharindusathsarahome/tharindusathsarahome/main/Project_W2/main.png" alt="Project Screenshot" width="800">
+</div>
+
+<br>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/tharindusathsarahome/tharindusathsarahome/main/Project_W2/slide1.png" alt="Slide 1" width="400">
+  <img src="https://raw.githubusercontent.com/tharindusathsarahome/tharindusathsarahome/main/Project_W2/slide2.png" alt="Slide 2" width="400">
+</div>
 
 ## Getting Started
 
