@@ -27,7 +27,7 @@ To set up the project locally, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/tharindusathsarahome/PROJECT_W2.git
+    git clone https://github.com/tharindusathsarahome/SmartMovieMate.git
     ```
 
 2. Set up your PHP server. You can use tools like XAMPP or WampServer.
@@ -54,7 +54,7 @@ To set up the project locally, follow these steps:
 5. Open the project in a web browser:
 
     ```
-    http://localhost/PROJECT_W2
+    http://localhost/SmartMovieMate
     ```
 
 ## Project Structure
