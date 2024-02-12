@@ -445,9 +445,7 @@ $today_date = date("Y/m/d");
             </div>
             <div class="flex-child-ft item2" >
                  <p>BestMovie.com<br>
-                 Dilanka Kasun, IBM (PVL)LTD, Ahangama.<br>
-                 Tharindu Sathsara, Nasa Institute, Alawwa.<br>
-                 Kavindu Damsith, Damsith International SPA, Galathara.<br>
+                 Polpala, Olaganduwa, Ahangama.<br>
                  </p>
                 <p>Call us: <a href="#">(+94) 711 234 5678</a></p>
             </div>
